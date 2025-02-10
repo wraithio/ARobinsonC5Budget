@@ -1,0 +1,73 @@
+@font-face {
+  font-family: "Bangers";
+  src: url("/Assets/Fonts/animeace2_reg.ttf");
+}
+@font-face {
+  font-family: "Bangers-Bold";
+  src: url("/Assets/Fonts/animeace2_bld.ttf");
+}
+@font-face {
+  font-family: "Bangers-Ital";
+  src: url("/Assets/Fonts/animeace2_ital.ttf");
+}
+
+@font-face {
+  font-family: "Bubblegum";
+  src: url("/Assets/Fonts/BubblegumSans-Regular.ttf");
+}
+
+body {
+  background-image: url("/Assets/popartBG.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+h1 {
+  font-family: "Bangers", Arial, Helvetica, sans-serif;
+  color: rgb(241, 241, 128);
+  text-shadow: 0 1px 0 #17202A, 0 2px 0 #17202A,
+  0 7px 0 #17202A, 0 8px 0 #17202A,
+  0 11px 0 #17202A, 0 12px 0 #17202A;
+  font-size: 56px;
+}
+
+h2{
+    font-family: "Bangers-Bold", Arial, Helvetica, sans-serif;
+    width: fit-content;
+
+}
+
+.budgetBlock{
+    background-color: rgb(241, 241, 128);
+    border-radius: .5rem;
+    border: solid black 3px;
+}
+
+input{
+    width: 10rem !important;
+    font-family: "Bangers-Bold", Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    padding: .25rem;
+    border-radius: .5rem;
+}
+
+button{
+    font-family: "Bangers-Bold", Arial, Helvetica, sans-serif;
+    background-color: none;
+    background-color: transparent;
+    border: solid black;
+    border-radius: .5rem;
+}
+
+button:hover{
+    
+    background-color: white;
+}
+
+hr{
+    border: none;
+    height: 5px;
+    color: #000000; 
+    background-color: #000000;  
+}
