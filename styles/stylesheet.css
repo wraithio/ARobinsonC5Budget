@@ -23,6 +23,12 @@ body {
   background-size: cover;
 }
 
+.gameScreen{
+    min-height: 100vh;
+    display: flex;
+    align-items:center;
+}
+
 h1 {
   font-family: "Bangers", Arial, Helvetica, sans-serif;
   color: rgb(241, 241, 128);
@@ -45,8 +51,8 @@ h2{
 }
 
 input{
-    width: 10rem !important;
-    font-family: "Bangers-Bold", Arial, Helvetica, sans-serif;
+    width: 10rem;
+    font-family: "Bubblegum", Arial, Helvetica, sans-serif;
     font-size: 24px;
     padding: .25rem;
     border-radius: .5rem;
@@ -67,7 +73,51 @@ button:hover{
 
 hr{
     border: none;
-    height: 5px;
+    height: 3px;
     color: #000000; 
     background-color: #000000;  
+}
+
+h3{
+    font-family: "Bubblegum", Arial, Helvetica, sans-serif;
+}
+
+#budgetNum{
+    color: rgb(241, 241, 128);
+    text-shadow: 0 1px 0 #17202A, 0 2px 0 #17202A,
+  0 7px 0 #17202A, 0 8px 0 #17202A,
+  0 8px 0 #17202A, 0 10px 0 #17202A;
+}
+
+@media screen and (max-width: 515px) {
+    .gap-3{
+        flex-direction: column;
+    }
+
+    input{
+        width: 7rem;
+    }
+
+    #budgetBtn{
+        width: 7rem;
+        display: flex;
+        justify-content: center;
+    }
+
+    #budgetNum{
+        font-size: 48px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .my-2{
+        flex-direction: column;
+        gap: .5rem;
+    }
+    h1{
+        font-size: 36px;
+    }
+    #costInput{
+        margin-left: 2.5rem;
+    }
 }

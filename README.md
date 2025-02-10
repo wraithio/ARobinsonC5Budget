@@ -22,6 +22,6 @@ Requirements:
 
 ---
 
-github [here](https://github.com/wraithio/ARobinsonP5PokeAPI)
+github [here](https://github.com/wraithio/ARobinsonC5Budget)
 
 vercel [here](https://a-robinson-p5-poke-api.vercel.app/)

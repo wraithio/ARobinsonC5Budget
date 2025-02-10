@@ -11,35 +11,44 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./styles/stylesheet.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/Assets/favicon-32x32.png">
   </head>
   <body>
-    <div class="container">
-      <div class="row">
-        <h1>PennyWise</h1>
-      </div>
-      <div class="d-flex gap-3 py-3">
-        <h2>Enter your budget:</h2>
-        <input id="budgetInput" type="text" />
-        <button id="budgetBtn">Enter</button>
-      </div>
-      <div class="row budgetBlock">
-        <div class="d-flex justify-content-around">
-          <div class="d-flex">
-            <h3>Category:</h3>
-            <input type="text" id="catInput" />
-          </div>
-          <div class="d-flex">
-            <h3>Cost:</h3>
-            <input type="text" id="costInput" />
-          </div>
-          <button id="addBtn">+</button>
+    <div class="gameScreen">
+      <div class="container">
+        <div class="row">
+          <h1>PennyWise</h1>
         </div>
-        <div id="budgetList"></div>
-        <hr>
-      </div>
-      <div class="d-flex">
-        <h2>Budget:$</h2>
-        <h2 id="budgetNum"></h2>
+        <div class="d-flex gap-3 py-3">
+          <h2>Enter your budget:</h2>
+          <input id="budgetInput" type="text" />
+          <button id="budgetBtn">Enter</button>
+        </div>
+        <h3 id="warningText">First enter a budget above.</h3>
+        <div class="row budgetBlock">
+          <div class="d-flex my-2 justify-content-around">
+            <div class="d-flex">
+              <h3>Category:</h3>
+              <input type="text" id="catInput" />
+            </div>
+            <div class="d-flex">
+              <h3>Cost:</h3>
+              <input type="text" id="costInput" />
+            </div>
+            <button id="addBtn">+</button>
+          </div>
+          <div id="budgetList"></div>
+          <hr />
+        </div>
+        <div class="d-flex">
+          <h2>Budget:$</h2>
+          <h2 id="budgetNum"></h2>
+        </div>
+        <div class="d-flex">
+          <h3>Original Budget:$</h3>
+          <h3 id="originalBudget"></h3>
+        </div>
+        
       </div>
     </div>
     <script type="module" src="/scripts/app.js"></script>

@@ -1,8 +1,18 @@
+import {
+  saveToLocalStorage,
+  getFromLocalStorage,
+  removeFromLocalStorage,
+  saveBudget,
+} from "./localstorage.js";
+let budget = false;
+warningText.className = "d-none";
 budgetBtn.addEventListener("click", () => {
   if (isNaN(budgetInput.value)) {
     budgetInput.value = "";
   } else {
+    budget = true;
     budgetNum.innerText = budgetInput.value;
+    saveBudget(budgetInput.value, "Budgets");
   }
 });
 
@@ -21,17 +31,24 @@ budgetBtn.addEventListener("click", () => {
 }
 
 addBtn.addEventListener("click", () => {
-  createEntry(catInput.value, costInput.value);
-  budgetNum.innerText = parseInt(budgetNum.innerText) - parseInt(costInput.value);
-  catInput.value = "";
-  costInput.value = "";
+  if (budgetNum.innerText == "") {
+    catInput.value = "";
+    costInput.value = "";
+  } else {
+    createEntry(catInput.value, costInput.value);
+    budgetNum.innerText =
+      parseInt(budgetNum.innerText) - parseInt(costInput.value);
+    catInput.value = "";
+    costInput.value = "";
+  }
 });
 
 let createEntry = (category, cost) => {
+  saveToLocalStorage(category, "Category");
+  saveToLocalStorage(cost, "Costs");
   let dataEntry = document.createElement("div");
   dataEntry.className = "d-flex justify-content-around";
   let entryDiv = document.createElement("div");
-//   entryDiv.className = "d-flex";
   let entryDiv2 = document.createElement("div");
   entryDiv2.className = "d-flex";
   let h3 = document.createElement("h3");
@@ -40,7 +57,8 @@ let createEntry = (category, cost) => {
   removeBtn.id = "remove";
   removeBtn.innerText = "X";
   removeBtn.addEventListener("click", async () => {
-    // removeFromLocalStorage(name);
+    removeFromLocalStorage(category, "Category");
+    removeFromLocalStorage(cost, "Costs");
     dataEntry.remove();
     budgetNum.innerText = parseInt(budgetNum.innerText) + parseInt(cost);
   });
@@ -50,6 +68,48 @@ let createEntry = (category, cost) => {
   dataEntry.appendChild(entryDiv2);
   h32.innerText = `$${cost}`;
   entryDiv2.appendChild(h32);
-  dataEntry.appendChild(removeBtn)
+  dataEntry.appendChild(removeBtn);
   budgetList.appendChild(dataEntry);
 };
+
+let elementsOnload = async () => {
+  let costArr = getFromLocalStorage("Costs");
+  let catArr = getFromLocalStorage("Category");
+  if (costArr == []) {
+    return null;
+  }
+  console.log(costArr);
+  const sum = costArr.reduce((sum, str) => sum + Number(str), 0);
+  console.log(sum);
+  budgetNum.innerText = getFromLocalStorage("Budgets") - sum;
+  originalBudget.innerText = getFromLocalStorage("Budgets");
+  for (let i = 0; i < costArr.length; i++) {
+    let dataEntry = document.createElement("div");
+    dataEntry.className = "d-flex justify-content-around";
+    let entryDiv = document.createElement("div");
+    let entryDiv2 = document.createElement("div");
+    entryDiv2.className = "d-flex";
+    let h3 = document.createElement("h3");
+    let h32 = document.createElement("h3");
+    let removeBtn = document.createElement("button");
+    removeBtn.id = "remove";
+    removeBtn.innerText = "X";
+    removeBtn.addEventListener("click", async () => {
+      removeFromLocalStorage(catArr[i], "Category");
+      removeFromLocalStorage(costArr[i], "Costs");
+      dataEntry.remove();
+      budgetNum.innerText =
+        parseInt(budgetNum.innerText) + parseInt(costArr[i]);
+    });
+    dataEntry.appendChild(entryDiv);
+    h3.innerText = catArr[i];
+    entryDiv.appendChild(h3);
+    dataEntry.appendChild(entryDiv2);
+    h32.innerText = `$${costArr[i]}`;
+    entryDiv2.appendChild(h32);
+    dataEntry.appendChild(removeBtn);
+    budgetList.appendChild(dataEntry);
+  }
+};
+
+elementsOnload();
