@@ -17,6 +17,21 @@ budgetBtn.addEventListener("click", () => {
   }
 });
 
+
+addBtn.addEventListener("click", () => {
+    if (budgetNum.innerText == "" || isNaN(costInput.value)) {
+        catInput.value = "";
+        costInput.value = "";
+    } else {
+        createEntry(catInput.value, costInput.value);
+        budgetNum.innerText =
+        parseInt(budgetNum.innerText) - parseInt(costInput.value);
+        catInput.value = "";
+        costInput.value = "";
+    }
+
+ 
+});
 {
   /* <div class="d-flex justify-content-around">
           <div class="d-flex">
@@ -30,19 +45,6 @@ budgetBtn.addEventListener("click", () => {
           <button id="addBtn">+</button>
         </div> */
 }
-
-addBtn.addEventListener("click", () => {
-  if (budgetNum.innerText == "" || isNaN(costInput.value)) {
-    catInput.value = "";
-    costInput.value = "";
-  } else {
-    createEntry(catInput.value, costInput.value);
-    budgetNum.innerText =
-      parseInt(budgetNum.innerText) - parseInt(costInput.value);
-    catInput.value = "";
-    costInput.value = "";
-  }
-});
 
 let createEntry = (category, cost) => {
   saveToLocalStorage(category, "Category");
