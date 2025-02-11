@@ -11,6 +11,7 @@ budgetBtn.addEventListener("click", () => {
     budgetInput.value = "";
   } else {
     budget = true;
+    originalBudget.innerText = budgetInput.value;
     budgetNum.innerText = budgetInput.value;
     saveBudget(budgetInput.value, "Budgets");
   }
@@ -31,7 +32,7 @@ budgetBtn.addEventListener("click", () => {
 }
 
 addBtn.addEventListener("click", () => {
-  if (budgetNum.innerText == "") {
+  if (budgetNum.innerText == "" || isNaN(costInput.value)) {
     catInput.value = "";
     costInput.value = "";
   } else {
