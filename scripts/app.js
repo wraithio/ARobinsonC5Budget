@@ -19,7 +19,7 @@ budgetBtn.addEventListener("click", () => {
 
 
 addBtn.addEventListener("click", () => {
-    if (budgetNum.innerText == "" || isNaN(costInput.value)) {
+    if (budgetNum.innerText == "" || isNaN(costInput.value) || catInput.innerText == "") {
         catInput.value = "";
         costInput.value = "";
     } else {
